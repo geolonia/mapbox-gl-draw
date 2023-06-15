@@ -24,13 +24,8 @@ const map = new mapboxgl.Map({
   container: 'map',
   zoom: 1,
   center: [0, 0],
-  style: 'mapbox://styles/mapbox/streets-v8'
+  style: 'geolonia/basic-v1'
 });
-
-map.addControl(new MapboxGeocoder({
-  accessToken: mapboxgl.accessToken,
-  mapboxgl
-}));
 
 map.addControl(new mapboxgl.NavigationControl(), 'top-left');
 
@@ -60,10 +55,10 @@ map.on('load', () => {
 
   // Toggle the style between dark and streets
   const flipStyleButton = document.getElementById('flipStyleBtn');
-  let currentStyle = 'streets-v9';
+  let currentStyle = 'basic-v1';
   flipStyleButton.onclick = function() {
-    const style = currentStyle === 'streets-v9' ? 'dark-v9' : 'streets-v9';
-    map.setStyle(`mapbox://styles/mapbox/${style}`);
+    const style = currentStyle === 'basic-v1' ? 'gsi' : 'basic-v1';
+    map.setStyle(`geolonia/${style}`);
     currentStyle = style;
   };
 

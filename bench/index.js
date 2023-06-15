@@ -119,7 +119,7 @@ function createMap(options) {
 
   const map = new mapboxgl.Map(Object.assign({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v12'
+    style: 'geolonia/basic-v1',
   }, options));
 
   const draw = new MapboxDraw(options);

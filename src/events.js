@@ -127,7 +127,8 @@ export default function(ctx) {
   const isKeyModeValid = code => !(code === 8 || code === 46 || (code >= 48 && code <= 57));
 
   events.keydown = function(event) {
-    const isMapElement = (event.srcElement || event.target).classList.contains('mapboxgl-canvas');
+    const classList = (event.srcElement || event.target).classList;
+    const isMapElement = classList.contains('mapboxgl-canvas') || classList.contains('maplibregl-canvas');
     if (!isMapElement) return; // we only handle events on the map
 
     if ((event.keyCode === 8 || event.keyCode === 46) && ctx.options.controls.trash) {

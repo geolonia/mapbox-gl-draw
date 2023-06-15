@@ -16,14 +16,13 @@
     "lint": "eslint index.js src test bench",
     "tape": "tape -r @babel/register -r ./test/mock-browser.js test/*.test.js",
     "coverage": "NODE_ENV=test nyc --reporter html npm run tape && opener coverage/index.html",
-    "build-token": "node build/generate-access-token-script.js",
     "build": "rollup -c",
     "build-min": "rollup -c --environment MINIFY:true",
     "prepublishOnly": "run-s build build-min",
     "watch": "rollup -c --watch",
     "watch-bench": "rollup -c bench/rollup.config.js --watch",
     "start-server": "st --no-cache -H 0.0.0.0 --port 9967 --index index.html .",
-    "start": "run-p build-token watch watch-bench start-server"
+    "start": "run-p watch watch-bench start-server"
   },
   "files": [
     "dist/mapbox-gl-draw*"

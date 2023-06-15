@@ -1,4 +1,4 @@
-/* global mapboxgl, MapboxGeocoder, MapboxDraw */
+/* global mapboxgl, MapboxDraw */
 
 const StaticMode = {};
 

@@ -1,8 +1,8 @@
 {
-  "name": "@mapbox/mapbox-gl-draw",
+  "name": "@geolonia/mapbox-gl-draw",
   "version": "1.4.1",
   "description": "A drawing component for Mapbox GL JS",
-  "homepage": "https://github.com/mapbox/mapbox-gl-draw",
+  "homepage": "https://github.com/geolonia/mapbox-gl-draw",
   "author": "mapbox",
   "license": "ISC",
   "main": "dist/mapbox-gl-draw.js",
@@ -29,16 +29,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/mapbox/mapbox-gl-draw.git"
+    "url": "git://github.com/geolonia/mapbox-gl-draw.git"
   },
   "keywords": [
     "webgl",
     "mapbox",
     "draw",
-    "drawing"
+    "drawing",
+    "maplibre"
   ],
   "bugs": {
-    "url": "https://github.com/mapbox/mapbox-gl-draw/issues"
+    "url": "https://github.com/geolonia/mapbox-gl-draw/issues"
   },
   "nyc": {
     "sourceMap": false,

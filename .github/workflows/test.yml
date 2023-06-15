@@ -6,6 +6,7 @@ on:
       - main
   pull_request:
     branches: ['*']
+  workflow_dispatch:
 
 jobs:
   build:
@@ -31,3 +32,47 @@ jobs:
         with:
           name: dist
           path: dist
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+
+    # Allow one concurrent deployment
+    concurrency:
+      group: "pages"
+      cancel-in-progress: true
+
+    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist
+
+      - name: "Prepare deploy directory"
+        run: |
+          mkdir -p for_deploy
+          cp -r dist/* for_deploy
+          cp -r debug/* for_deploy
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "for_deploy"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
